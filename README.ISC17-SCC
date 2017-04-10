@@ -1,0 +1,73 @@
+# Competition rules
+
+The Code Challenge competition is composed by three parts:
+- run a provided input case (pe-23.LOCAL.in) on the system of the competition 
+  prior to the competition, submit the output to SCC committee by Friday 
+  June 16th 5:00pm UTC
+- run during the competition the known input case (pe-23.LOCAL.in) then prove 
+  during the competition to be able to replicate a similar timing submitted 
+  previously. It is allowed to tune and modifying further the code during the 
+  competition itself but all code.
+- run an unknown input case provided during the competition
+  
+During the competition, each team is allowed to modify the miniDFT code without 
+any limitation apart comply with verification rules. Changes include linking
+optimized libraries, improving multi-threading, play with optimization flags,
+porting of portion (or entire) code on varios accelerator flavors, rewrite
+parallelism, reimplement an algorithm, etc. There is no upper bound of how many 
+lines of code can be modified.
+
+Each team has to make public on GitHub the entire miniDFT code before the
+competition starts and notify the location of the public repository to SCC 
+committee by Friday June 16th 5:00pm UTC. It is allowed to tune and modifying 
+further the code during the competition but new changes have to be publicly 
+shared.
+
+All teams will be able to see all GitHub public repositories.
+
+
+# Verification
+
+The benchmark runs are valid if the final total energy agrees with the 
+reference value to within 1e-5 Ry. It is possible to extract the final total 
+energy by doing this:
+
+$ grep "!    total energy              =" ./<path-to-output-file>
+
+
+ # Timing
+
+The time measured by the miniDFT benchmark excludes initialization and 
+finalization stages. It is labeled "Benchmark_Time" (without quotes) and is on 
+the final line of output.
+
+$ grep "Benchmark_Time :" ./<path-to-output-file>
+
+
+# Submission and Reporting
+
+Each team has to make public on GitHub the entire miniDFT code before the 
+competition starts by Friday June 16th 5:00pm UTC. At the same time the team 
+have to produce a short report and/or presentation describing the activity done 
+on the code. Providing only the code is not sufficient. 
+
+If not the entire team has contributed in modifying the code, the people 
+involved in the code porting and development need to be named explicitly.
+
+
+# Evaluation
+
+The overall score is computed considering the following three factors:
+A - Ranking walltime obtained running the unknown input (40%) 
+B - Work done to optimize and porting the code (40%)
+C - Ranking walltime obtained by a reproducibility run of the known input (20%)
+
+Below some example how score is assigned:
+- if a code is submitted but not there is not a report describing the changes
+  then 'A' is zero 
+- if a team or the people in the team are unable to answer questions about the 
+  work done on the code then 'B' is zero
+- if the team cannot reproduce a similar result obtained before the competition
+  for the known input case, then 'C' is zero
+- if the code runs but fail to generate a reference total energy then 'A' is 
+  zero 
